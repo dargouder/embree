@@ -27,3 +27,16 @@ IF (EMBREE_STATIC_LIB)
   INSTALL(EXPORT lexers-targets DESTINATION ${EMBREE_CMAKECONFIG_DIR} COMPONENT devel)
   SIGN_TARGET(lexers)
 ENDIF()
+
+if(APPLE)
+elseif(UNIX)
+elseif(WIN32)
+	#copying built lib to the output
+	add_custom_command(
+	TARGET lexers 
+	POST_BUILD
+	COMMAND ${CMAKE_COMMAND} -E copy
+	 $<TARGET_FILE:lexers>
+	 ${CMAKE_SOURCE_DIR}/../builtDependencies/windows/$<CONFIGURATION>/lexers.lib)		
+endif()
+

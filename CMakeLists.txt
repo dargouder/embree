@@ -504,3 +504,61 @@ SET_PROPERTY(TARGET uninstall PROPERTY FOLDER CMakePredefinedTargets)
 # Has to be last
 ##############################################################
 INCLUDE(CPack)
+
+# CUSTOM CMAKE
+file(COPY "include/" DESTINATION "${CMAKE_SOURCE_DIR}/../builtDependencies/includes/embree")
+
+# copying common folder header files
+file(MAKE_DIRECTORY "${CMAKE_SOURCE_DIR}/../builtDependencies/includes/embree/common")
+
+file(MAKE_DIRECTORY "${CMAKE_SOURCE_DIR}/../builtDependencies/includes/embree/common/algorithms")
+file(GLOB_RECURSE ALGORITHMS "common/algorithms/*.h")
+file(COPY ${ALGORITHMS} DESTINATION ${CMAKE_SOURCE_DIR}/../builtDependencies/includes/embree/common/algorithms)
+
+file(MAKE_DIRECTORY "${CMAKE_SOURCE_DIR}/../builtDependencies/includes/embree/common/lexers")
+file(GLOB_RECURSE LEXERS "common/algorithms/*.h")
+file(COPY ${LEXERS} DESTINATION ${CMAKE_SOURCE_DIR}/../builtDependencies/includes/embree/common/lexers)
+
+
+file(MAKE_DIRECTORY "${CMAKE_SOURCE_DIR}/../builtDependencies/includes/embree/common/math")
+file(GLOB_RECURSE MATH "common/math/*.h")
+file(COPY ${MATH} DESTINATION ${CMAKE_SOURCE_DIR}/../builtDependencies/includes/embree/common/math)
+
+file(MAKE_DIRECTORY "${CMAKE_SOURCE_DIR}/../builtDependencies/includes/embree/common/simd")
+file(GLOB_RECURSE SIMD "common/simd/*.h")
+file(COPY ${SIMD} DESTINATION ${CMAKE_SOURCE_DIR}/../builtDependencies/includes/embree/common/simd)
+
+file(MAKE_DIRECTORY "${CMAKE_SOURCE_DIR}/../builtDependencies/includes/embree/common/sys")
+file(GLOB_RECURSE SYS "common/sys/*.h")
+file(COPY ${SYS} DESTINATION ${CMAKE_SOURCE_DIR}/../builtDependencies/includes/embree/common/sys)
+
+file(MAKE_DIRECTORY "${CMAKE_SOURCE_DIR}/../builtDependencies/includes/embree/common/tasking")
+file(GLOB_RECURSE TASKING "common/tasking/*.h")
+file(COPY ${TASKING} DESTINATION ${CMAKE_SOURCE_DIR}/../builtDependencies/includes/embree/common/tasking)
+
+# copying kernel folder header files
+file(MAKE_DIRECTORY "${CMAKE_SOURCE_DIR}/../builtDependencies/includes/embree/kernels")
+file(GLOB KERNELS_ROOT "kernels/*.h")
+file(COPY ${KERNELS_ROOT} DESTINATION ${CMAKE_SOURCE_DIR}/../builtDependencies/includes/embree/kernels/)
+
+file(MAKE_DIRECTORY "${CMAKE_SOURCE_DIR}/../builtDependencies/includes/embree/kernels/builders")
+file(GLOB_RECURSE BUILDERS "kernels/builders/*.h")
+file(COPY ${BUILDERS} DESTINATION ${CMAKE_SOURCE_DIR}/../builtDependencies/includes/embree/kernels/builders)
+
+file(MAKE_DIRECTORY "${CMAKE_SOURCE_DIR}/../builtDependencies/includes/embree/kernels/bvh")
+file(GLOB_RECURSE BVH "kernels/bvh/*.h")
+file(COPY ${BVH} DESTINATION ${CMAKE_SOURCE_DIR}/../builtDependencies/includes/embree/kernels/bvh)
+
+
+file(MAKE_DIRECTORY "${CMAKE_SOURCE_DIR}/../builtDependencies/includes/embree/kernels/common")
+file(GLOB_RECURSE COMMON "kernels/common/*.h")
+file(COPY ${COMMON} DESTINATION ${CMAKE_SOURCE_DIR}/../builtDependencies/includes/embree/kernels/common)
+
+file(MAKE_DIRECTORY "${CMAKE_SOURCE_DIR}/../builtDependencies/includes/embree/kernels/geometry")
+file(GLOB_RECURSE GEOMETRY "kernels/geometry/*.h")
+file(COPY ${GEOMETRY} DESTINATION ${CMAKE_SOURCE_DIR}/../builtDependencies/includes/embree/kernels/geometry)
+
+file(MAKE_DIRECTORY "${CMAKE_SOURCE_DIR}/../builtDependencies/includes/embree/kernels/subdiv")
+file(GLOB_RECURSE SUBDIV "kernels/subdiv/*.h")
+file(COPY ${SUBDIV} DESTINATION ${CMAKE_SOURCE_DIR}/../builtDependencies/includes/embree/kernels/subdiv)
+

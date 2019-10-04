@@ -24,3 +24,14 @@ IF (EMBREE_STATIC_LIB)
   SIGN_TARGET(math)
 ENDIF()
 
+if(APPLE)
+elseif(UNIX)
+elseif(WIN32)
+	#copying built lib to the output
+	add_custom_command(
+	TARGET math 
+	POST_BUILD
+	COMMAND ${CMAKE_COMMAND} -E copy
+	 $<TARGET_FILE:math>
+	 ${CMAKE_SOURCE_DIR}/../builtDependencies/windows/$<CONFIGURATION>/math.lib)		
+endif()

@@ -34,3 +34,16 @@ IF (EMBREE_STATIC_LIB)
   INSTALL(EXPORT tasking-targets DESTINATION ${EMBREE_CMAKECONFIG_DIR} COMPONENT devel)
   SIGN_TARGET(tasking)
 ENDIF()
+
+if(APPLE)
+elseif(UNIX)
+elseif(WIN32)
+	#copying built lib to the output
+	add_custom_command(
+	TARGET tasking 
+	POST_BUILD
+	COMMAND ${CMAKE_COMMAND} -E copy
+	 $<TARGET_FILE:tasking>
+	 ${CMAKE_SOURCE_DIR}/../builtDependencies/windows/$<CONFIGURATION>/tasking.lib)		
+endif()
+

@@ -39,3 +39,16 @@ IF (EMBREE_STATIC_LIB)
   INSTALL(EXPORT sys-targets DESTINATION ${EMBREE_CMAKECONFIG_DIR} COMPONENT devel)
   SIGN_TARGET(sys)
 ENDIF()
+
+if(APPLE)
+elseif(UNIX)
+elseif(WIN32)
+	#copying built lib to the output
+	add_custom_command(
+	TARGET sys 
+	POST_BUILD
+	COMMAND ${CMAKE_COMMAND} -E copy
+	 $<TARGET_FILE:sys>
+	 ${CMAKE_SOURCE_DIR}/../builtDependencies/windows/$<CONFIGURATION>/sys.lib)		
+endif()
+

@@ -351,3 +351,28 @@ IF (NOT EMBREE_STATIC_LIB)
 ENDIF()
 
 SIGN_TARGET(embree)
+
+if(APPLE)
+elseif(UNIX)
+elseif(WIN32)
+	#copying built lib to the output
+	add_custom_command(
+	TARGET embree 
+	POST_BUILD
+	COMMAND ${CMAKE_COMMAND} -E copy
+	 $<TARGET_FILE:embree>
+	 ${CMAKE_SOURCE_DIR}/../builtDependencies/windows/$<CONFIGURATION>/embree.lib)		
+endif()
+
+if(APPLE)
+elseif(UNIX)
+elseif(WIN32)
+	#copying built lib to the output
+	add_custom_command(
+	TARGET embree_sse42 
+	POST_BUILD
+	COMMAND ${CMAKE_COMMAND} -E copy
+	 $<TARGET_FILE:embree_sse42>
+	 ${CMAKE_SOURCE_DIR}/../builtDependencies/windows/$<CONFIGURATION>/embree_sse42.lib)		
+endif()
+
