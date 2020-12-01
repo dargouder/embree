@@ -530,7 +530,6 @@ file(MAKE_DIRECTORY "${CMAKE_SOURCE_DIR}/../builtDependencies/includes/embree/co
 file(GLOB_RECURSE LEXERS "common/algorithms/*.h")
 file(COPY ${LEXERS} DESTINATION ${CMAKE_SOURCE_DIR}/../builtDependencies/includes/embree/common/lexers)
 
-
 file(MAKE_DIRECTORY "${CMAKE_SOURCE_DIR}/../builtDependencies/includes/embree/common/math")
 file(GLOB_RECURSE MATH "common/math/*.h")
 file(COPY ${MATH} DESTINATION ${CMAKE_SOURCE_DIR}/../builtDependencies/includes/embree/common/math)
@@ -559,7 +558,6 @@ file(COPY ${BUILDERS} DESTINATION ${CMAKE_SOURCE_DIR}/../builtDependencies/inclu
 file(MAKE_DIRECTORY "${CMAKE_SOURCE_DIR}/../builtDependencies/includes/embree/kernels/bvh")
 file(GLOB_RECURSE BVH "kernels/bvh/*.h")
 file(COPY ${BVH} DESTINATION ${CMAKE_SOURCE_DIR}/../builtDependencies/includes/embree/kernels/bvh)
-
 
 file(MAKE_DIRECTORY "${CMAKE_SOURCE_DIR}/../builtDependencies/includes/embree/kernels/common")
 file(GLOB_RECURSE COMMON "kernels/common/*.h")
