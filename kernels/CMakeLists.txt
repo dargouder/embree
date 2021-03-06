@@ -363,6 +363,13 @@ if(APPLE)
 	 $<TARGET_FILE:embree>
 	 ${CMAKE_SOURCE_DIR}/../builtDependencies/apple/$<CONFIGURATION>/libembree.a)
 elseif(UNIX)
+	#copying built lib to the output
+	add_custom_command(
+	TARGET embree_sse42 
+	POST_BUILD
+	COMMAND ${CMAKE_COMMAND} -E copy
+	 $<TARGET_FILE:embree_sse42>
+	 ${CMAKE_SOURCE_DIR}/../builtDependencies/unix/$<CONFIGURATION>/libembree_sse.a)	
 elseif(WIN32)
 	#copying built lib to the output
 	add_custom_command(
@@ -382,6 +389,13 @@ if(APPLE)
 	 $<TARGET_FILE:embree_sse42>
 	 ${CMAKE_SOURCE_DIR}/../builtDependencies/apple/$<CONFIGURATION>/libembree_sse42.a)	
 elseif(UNIX)
+	#copying built lib to the output
+	add_custom_command(
+	TARGET embree_sse42 
+	POST_BUILD
+	COMMAND ${CMAKE_COMMAND} -E copy
+	 $<TARGET_FILE:embree_sse42>
+	 ${CMAKE_SOURCE_DIR}/../builtDependencies/unix/$<CONFIGURATION>/libembree_sse42.a)	
 elseif(WIN32)
 	#copying built lib to the output
 	add_custom_command(
