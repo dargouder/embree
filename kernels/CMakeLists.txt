@@ -365,11 +365,11 @@ if(APPLE)
 elseif(UNIX)
 	#copying built lib to the output
 	add_custom_command(
-	TARGET embree_sse42 
+	TARGET embree 
 	POST_BUILD
 	COMMAND ${CMAKE_COMMAND} -E copy
-	 $<TARGET_FILE:embree_sse42>
-	 ${CMAKE_SOURCE_DIR}/../builtDependencies/unix/$<CONFIGURATION>/libembree_sse.a)	
+	 $<TARGET_FILE:embree>
+	 ${CMAKE_SOURCE_DIR}/../builtDependencies/unix/$<CONFIGURATION>/libembree.a)	
 elseif(WIN32)
 	#copying built lib to the output
 	add_custom_command(

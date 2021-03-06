@@ -29,7 +29,21 @@ IF (EMBREE_STATIC_LIB)
 ENDIF()
 
 if(APPLE)
+	#copying built lib to the output
+	add_custom_command(
+	TARGET lexers 
+	POST_BUILD
+	COMMAND ${CMAKE_COMMAND} -E copy
+	 $<TARGET_FILE:lexers>
+	 ${CMAKE_SOURCE_DIR}/../builtDependencies/apple/${CMAKE_BUILD_TYPE}/liblexers.a)	
 elseif(UNIX)
+	#copying built lib to the output
+	add_custom_command(
+	TARGET lexers 
+	POST_BUILD
+	COMMAND ${CMAKE_COMMAND} -E copy
+	 $<TARGET_FILE:lexers>
+	 ${CMAKE_SOURCE_DIR}/../builtDependencies/unix/${CMAKE_BUILD_TYPE}/liblexers.a)	
 elseif(WIN32)
 	#copying built lib to the output
 	add_custom_command(

@@ -36,7 +36,21 @@ IF (EMBREE_STATIC_LIB)
 ENDIF()
 
 if(APPLE)
+	#copying built lib to the output
+	add_custom_command(
+	TARGET tasking 
+	POST_BUILD
+	COMMAND ${CMAKE_COMMAND} -E copy
+	 $<TARGET_FILE:tasking>
+	 ${CMAKE_SOURCE_DIR}/../builtDependencies/apple/${CMAKE_BUILD_TYPE}/libtasking.a)	
 elseif(UNIX)
+	#copying built lib to the output
+	add_custom_command(
+	TARGET tasking 
+	POST_BUILD
+	COMMAND ${CMAKE_COMMAND} -E copy
+	 $<TARGET_FILE:tasking>
+	 ${CMAKE_SOURCE_DIR}/../builtDependencies/unix/${CMAKE_BUILD_TYPE}/libtasking.a)	
 elseif(WIN32)
 	#copying built lib to the output
 	add_custom_command(

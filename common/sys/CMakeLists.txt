@@ -41,7 +41,21 @@ IF (EMBREE_STATIC_LIB)
 ENDIF()
 
 if(APPLE)
+	#copying built lib to the output
+	add_custom_command(
+	TARGET sys 
+	POST_BUILD
+	COMMAND ${CMAKE_COMMAND} -E copy
+	 $<TARGET_FILE:sys>
+	 ${CMAKE_SOURCE_DIR}/../builtDependencies/apple/${CMAKE_BUILD_TYPE}/libsys.a)		
 elseif(UNIX)
+	#copying built lib to the output
+	add_custom_command(
+	TARGET sys 
+	POST_BUILD
+	COMMAND ${CMAKE_COMMAND} -E copy
+	 $<TARGET_FILE:sys>
+	 ${CMAKE_SOURCE_DIR}/../builtDependencies/unix/${CMAKE_BUILD_TYPE}/libsys.a)		
 elseif(WIN32)
 	#copying built lib to the output
 	add_custom_command(
